@@ -5,7 +5,7 @@ const dateMonth = document.getElementById('dateMonth');
 const dateYear = document.getElementById('dateYear');
 
 // task container
-const taskContainer = document.getElementById('taskContainer');
+const tasksContainer = document.getElementById('tasksContainer');
 
 const setDate = () => {
     // appi de js para obtener fecha actual
@@ -27,11 +27,11 @@ const addNewTask = event => {
     // agregamos dos clases
     task.classList.add('task','roundBorder');
     // cuando hagamos click cambiamos el estado
-    task.addEventListener('click', changeTaskState);
+    task.addEventListener('click', changeTaskState)
     // dentro del elemento ponemos el text que ingreso el usario
     task.textContent = value;
     // agregamos al principio de la lista
-    taskContainer.prepend(task);
+    tasksContainer.prepend(task);
     // reseteamos el form para que este vacio
     event.target.reset();
 }
@@ -44,7 +44,7 @@ const changeTaskState = event =>{
 const order = () =>{
     const done = [];
     const toDo = [];
-    taskContainer.childNodes.forEach( el => {
+    tasksContainer.childNodes.forEach( el => {
         el.classList.contains('done') ? done.push(el) :toDo.push(el);
     })
     // devuelve un array donde las tareas por hacer estan primeras
@@ -54,7 +54,7 @@ const order = () =>{
 const renderOrderTasks = () =>{
     // llamamos a order que nos devuelve el array y lo iteramos
     // lo vamos a agregar a task container 1 por 1
-    order().forEach(el =>taskContainer.appendChild(el))
+    order().forEach(el =>tasksContainer.appendChild(el))
 }
 setDate();
 
